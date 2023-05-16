@@ -7,6 +7,10 @@ html, body {
     user-select: none;
 }
 
+h1 {
+    text-align: center;
+}
+
 .container {
     border: 3px solid black;
     border-radius: 15px;
@@ -72,4 +76,9 @@ ul li {
 ul li:hover{
     cursor: pointer;
     background-color: #FFECC7;
+}
+
+footer {
+    font-size: 0.8rem;
+    margin-top: 10px;
 }
