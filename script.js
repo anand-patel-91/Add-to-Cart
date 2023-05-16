@@ -64,7 +64,10 @@ function appendItemToShoppingListEl(item) {
 
         let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
         
-        remove(exactLocationOfItemInDB)
+        const userResponse = confirm(`Are you sure you want to delete ${itemValue} from the List?`)
+        if(userResponse){
+            remove(exactLocationOfItemInDB)
+        }
     })
     
     shoppingListEl.append(newEl)
