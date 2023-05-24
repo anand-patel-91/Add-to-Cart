@@ -78,7 +78,17 @@ ul li:hover{
     background-color: #FFECC7;
 }
 
-footer {
+div footer {
     font-size: 0.8rem;
     margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+a, a:visited{
+    text-decoration: none;
+    color: black;   
 }
