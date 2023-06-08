@@ -15,13 +15,21 @@ const shoppingListEl = document.getElementById("shopping-list")
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
-    
+    inputValue=inputValue.trimStart()
+
     if(inputValue!==""){
         push(shoppingListInDB, inputValue)
         
         clearInputFieldEl()
     }else{
+        clearInputFieldEl()
         alert("Input is empty")
+    }
+})
+
+inputFieldEl.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        addButtonEl.click();
     }
 })
 
