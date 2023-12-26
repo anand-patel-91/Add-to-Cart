@@ -49,7 +49,7 @@ const Home = () => {
                 setItems([]);
             }
         });
-    }, []);
+    });
 
     return (
         <div>
