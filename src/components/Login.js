@@ -26,31 +26,36 @@ const Login = () => {
     };
 
     return (
-        <div className="container">
-            <h2>Sign In</h2>
-            <input
-                type="email"
-                placeholder="Enter your email"
-                onChange={(e) => setEmail(e.target.value.trimStart().trimEnd())}
-                value={email}
-            />
-            <input
-                type="password"
-                placeholder="Enter your password"
-                onChange={(e) =>
-                    setPassword(e.target.value.trimStart().trimEnd())
-                }
-                value={password}
-            />
-            <button disabled={loading} onClick={handleSubmit}>
-                Log In
-            </button>
-            {loading && "Logging in, please wait..."}
-            {err && <span className="error">Something went wrong</span>}
-            <p>
-                Don't have an account? <Link to="/register">Register</Link>
-            </p>
-        </div>
+        <>
+            <h1>Shopping Cart</h1>
+            <div className="container">
+                <h2>Sign In</h2>
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    onChange={(e) =>
+                        setEmail(e.target.value.trimStart().trimEnd())
+                    }
+                    value={email}
+                />
+                <input
+                    type="password"
+                    placeholder="Enter your password"
+                    onChange={(e) =>
+                        setPassword(e.target.value.trimStart().trimEnd())
+                    }
+                    value={password}
+                />
+                <button disabled={loading} onClick={handleSubmit}>
+                    Log In
+                </button>
+                {loading && "Logging in, please wait..."}
+                {err && <span className="error">Something went wrong</span>}
+                <p>
+                    Don't have an account? <Link to="/register">Register</Link>
+                </p>
+            </div>
+        </>
     );
 };
 

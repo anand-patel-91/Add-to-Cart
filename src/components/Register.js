@@ -32,40 +32,45 @@ const Register = () => {
     };
 
     return (
-        <div className="container">
-            <h2>Sign Up</h2>
-            <input
-                type="email"
-                placeholder="Enter your email"
-                required
-                onChange={(e) =>
-                    setEmail(e.target.value.trimStart().toLowerCase())
-                }
-                value={email}
-            />
-            <input
-                type="password"
-                placeholder="Enter your password"
-                required
-                onChange={(e) => setPassword(e.target.value.trimStart())}
-                value={password}
-            />
-            <input
-                type="password"
-                placeholder="Confirm password"
-                required
-                onChange={(e) => setConfirmPassword(e.target.value.trimStart())}
-                value={confirmPassword}
-            />
-            <button disabled={loading} onClick={handleSubmit}>
-                Create Account
-            </button>
-            {loading && "Creating Account, please wait..."}
-            {err && <span className="error">Something went wrong</span>}
-            <p>
-                Already have an account? <Link to="/login">Login</Link>
-            </p>
-        </div>
+        <>
+            <h1>Shopping Cart</h1>
+            <div className="container">
+                <h2>Sign Up</h2>
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                    onChange={(e) =>
+                        setEmail(e.target.value.trimStart().toLowerCase())
+                    }
+                    value={email}
+                />
+                <input
+                    type="password"
+                    placeholder="Enter your password"
+                    required
+                    onChange={(e) => setPassword(e.target.value.trimStart())}
+                    value={password}
+                />
+                <input
+                    type="password"
+                    placeholder="Confirm password"
+                    required
+                    onChange={(e) =>
+                        setConfirmPassword(e.target.value.trimStart())
+                    }
+                    value={confirmPassword}
+                />
+                <button disabled={loading} onClick={handleSubmit}>
+                    Create Account
+                </button>
+                {loading && "Creating Account, please wait..."}
+                {err && <span className="error">Something went wrong</span>}
+                <p>
+                    Already have an account? <Link to="/login">Login</Link>
+                </p>
+            </div>
+        </>
     );
 };
 
