@@ -1,16 +1,18 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBSy2LQX-8-4Bui2NDVTBL7WJtaa-N_bNI",
-    authDomain: "playground-3f040.firebaseapp.com",
+    apiKey: "AIzaSyCMZjFh5rYuHTUSWsGYxMyRw-QBs5qY0-0",
+    authDomain: "add-to-cart-fd487.firebaseapp.com",
     databaseURL:
-        "https://playground-3f040-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "playground-3f040",
-    storageBucket: "playground-3f040.appspot.com",
-    messagingSenderId: "741556035131",
-    appId: "1:741556035131:web:47313ed6a133516888061e",
+        "https://add-to-cart-fd487-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "add-to-cart-fd487",
+    storageBucket: "add-to-cart-fd487.appspot.com",
+    messagingSenderId: "356297981192",
+    appId: "1:356297981192:web:649e23c569fb6fc43880bd",
 };
 
 export const app = initializeApp(firebaseConfig);
 export const database = getDatabase(app);
+export const auth = getAuth(app);

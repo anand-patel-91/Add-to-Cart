@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
-import "./home.css";
-import cart from "./img/cart1.jpg";
+import React, { useContext, useEffect, useState } from "react";
+import cart from "../img/cart1.jpg";
 import { onValue, push, ref, remove } from "firebase/database";
-import { database } from "./config/firebase";
+import { auth, database } from "../config/firebase";
+import { signOut } from "firebase/auth";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Home = () => {
-    const shoppingListInDB = ref(database, "shoppingList");
+    const user = useContext(AuthContext);
+
+    const shoppingListInDB = ref(
+        database,
+        `shoppingList/${user.currentUser.uid}`
+    );
 
     const [text, setText] = useState("");
     const [items, setItems] = useState([]);
@@ -35,7 +41,10 @@ const Home = () => {
                 `Are you sure you want to delete ${name} from the List?`
             )
         ) {
-            let exactLocationOfItemInDB = ref(database, `shoppingList/${id}`);
+            let exactLocationOfItemInDB = ref(
+                database,
+                `shoppingList/${user.currentUser.uid}/${id}`
+            );
 
             remove(exactLocationOfItemInDB);
         }
@@ -54,6 +63,7 @@ const Home = () => {
     return (
         <div>
             <h1>Shopping Cart</h1>
+            <h2>Welcome, {user.currentUser.email}</h2>
             <div className="container">
                 <img
                     src={cart}
@@ -88,6 +98,7 @@ const Home = () => {
                 <footer>
                     <p>*Double Click on an item to remove. </p>
                 </footer>
+                <button onClick={() => signOut(auth)}>Sign Out</button>
             </div>
             <footer>
                 <small>
