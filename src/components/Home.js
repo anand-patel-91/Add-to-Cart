@@ -98,10 +98,12 @@ const Home = () => {
                                   ))
                                 : "Nothing here yet!"}
                         </ul>
-                        {items.length && (
+                        {items.length ? (
                             <footer>
                                 <p>*Double Click on an item to remove. </p>
                             </footer>
+                        ) : (
+                            ""
                         )}
                         <button onClick={() => signOut(auth)}>Sign Out</button>
                     </div>

@@ -8,6 +8,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState(false);
+    const [visibility, setVisibility] = useState(false);
 
     const navigate = useNavigate();
 
@@ -49,14 +50,33 @@ const Login = () => {
                     }
                     value={email}
                 />
-                <input
-                    type="password"
-                    placeholder="Enter your password"
-                    onChange={(e) =>
-                        setPassword(e.target.value.trimStart().trimEnd())
-                    }
-                    value={password}
-                />
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                    }}>
+                    <input
+                        type={visibility ? "text" : "password"}
+                        placeholder="Enter your password"
+                        onChange={(e) =>
+                            setPassword(e.target.value.trimStart().trimEnd())
+                        }
+                        value={password}
+                    />
+                    <button
+                        style={{
+                            backgroundColor: "#EEF0F4",
+                            border: "none",
+                            padding: "0",
+                        }}
+                        onClick={() => setVisibility(!visibility)}>
+                        {visibility ? (
+                            <>👀</>
+                        ) : (
+                            <s style={{ color: "black" }}>👀</s>
+                        )}
+                    </button>
+                </div>
                 <button disabled={loading} onClick={handleSubmit}>
                     Log In
                 </button>

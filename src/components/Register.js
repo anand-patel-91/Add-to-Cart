@@ -14,6 +14,8 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState(false);
+    const [visibility1, setVisibility1] = useState(false);
+    const [visibility2, setVisibility2] = useState(false);
 
     const navigate = useNavigate();
 
@@ -85,22 +87,62 @@ const Register = () => {
                     }
                     value={email}
                 />
-                <input
-                    type="password"
-                    placeholder="Enter your password"
-                    required
-                    onChange={(e) => setPassword(e.target.value.trimStart())}
-                    value={password}
-                />
-                <input
-                    type="password"
-                    placeholder="Confirm password"
-                    required
-                    onChange={(e) =>
-                        setConfirmPassword(e.target.value.trimStart())
-                    }
-                    value={confirmPassword}
-                />
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                    }}>
+                    <input
+                        type={visibility1 ? "text" : "password"}
+                        placeholder="Enter your password"
+                        required
+                        onChange={(e) =>
+                            setPassword(e.target.value.trimStart())
+                        }
+                        value={password}
+                    />
+                    <button
+                        style={{
+                            backgroundColor: "#EEF0F4",
+                            border: "none",
+                            padding: "0",
+                        }}
+                        onClick={() => setVisibility1(!visibility1)}>
+                        {visibility1 ? (
+                            <>👀</>
+                        ) : (
+                            <s style={{ color: "black" }}>👀</s>
+                        )}
+                    </button>
+                </div>
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                    }}>
+                    <input
+                        type={visibility2 ? "text" : "password"}
+                        placeholder="Confirm password"
+                        required
+                        onChange={(e) =>
+                            setConfirmPassword(e.target.value.trimStart())
+                        }
+                        value={confirmPassword}
+                    />
+                    <button
+                        style={{
+                            backgroundColor: "#EEF0F4",
+                            border: "none",
+                            padding: "0",
+                        }}
+                        onClick={() => setVisibility2(!visibility2)}>
+                        {visibility2 ? (
+                            <>👀</>
+                        ) : (
+                            <s style={{ color: "black" }}>👀</s>
+                        )}
+                    </button>
+                </div>
                 <button disabled={loading} onClick={handleSubmit}>
                     Create Account
                 </button>
