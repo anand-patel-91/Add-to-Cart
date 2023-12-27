@@ -14,12 +14,23 @@ const Login = () => {
     const handleSubmit = async () => {
         setLoading(true);
 
+        if (!email) {
+            alert("Email cannot be empty");
+            setLoading(false);
+            return;
+        }
+        if (!password) {
+            alert("Password cannot be empty");
+            setLoading(false);
+            return;
+        }
+
         try {
             await signInWithEmailAndPassword(auth, email, password);
             navigate("/");
             setLoading(false);
         } catch (error) {
-            console.log(error.message);
+            console.log(error);
             setLoading(false);
             setErr(true);
         }
@@ -52,7 +63,10 @@ const Login = () => {
                 {loading && "Logging in, please wait..."}
                 {err && <span className="error">Something went wrong</span>}
                 <p>
-                    Don't have an account? <Link to="/register">Register</Link>
+                    Don't have an account?{" "}
+                    <Link to="/register" style={{ color: "bluevoilet" }}>
+                        Register
+                    </Link>
                 </p>
             </div>
         </>

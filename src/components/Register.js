@@ -14,6 +14,17 @@ const Register = () => {
 
     const handleSubmit = async () => {
         setLoading(true);
+        if (!email) {
+            alert("Email cannot be empty");
+            setLoading(false);
+            return;
+        }
+        if (!password) {
+            alert("Password cannot be empty");
+            setLoading(false);
+            return;
+        }
+
         if (password !== confirmPassword) {
             alert("Passwords do not match");
             setLoading(false);
@@ -22,12 +33,13 @@ const Register = () => {
 
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            setLoading(false);
+
             navigate("/");
+            setLoading(false);
         } catch (error) {
-            console.log(error.message);
             setLoading(false);
             setErr(true);
+            console.log(error);
         }
     };
 
@@ -67,7 +79,10 @@ const Register = () => {
                 {loading && "Creating Account, please wait..."}
                 {err && <span className="error">Something went wrong</span>}
                 <p>
-                    Already have an account? <Link to="/login">Login</Link>
+                    Already have an account?{" "}
+                    <Link to="/login" style={{ color: "bluevoilet" }}>
+                        Login
+                    </Link>
                 </p>
             </div>
         </>

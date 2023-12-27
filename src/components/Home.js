@@ -6,12 +6,9 @@ import { signOut } from "firebase/auth";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Home = () => {
-    const user = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext);
 
-    const shoppingListInDB = ref(
-        database,
-        `shoppingList/${user.currentUser.uid}`
-    );
+    const shoppingListInDB = ref(database, `shoppingList/${currentUser.uid}`);
 
     const [text, setText] = useState("");
     const [items, setItems] = useState([]);
@@ -43,7 +40,7 @@ const Home = () => {
         ) {
             let exactLocationOfItemInDB = ref(
                 database,
-                `shoppingList/${user.currentUser.uid}/${id}`
+                `shoppingList/${currentUser.uid}/${id}`
             );
 
             remove(exactLocationOfItemInDB);
@@ -63,7 +60,7 @@ const Home = () => {
     return (
         <div>
             <h1>Shopping Cart</h1>
-            <h2>Welcome, {user.currentUser.email}</h2>
+            <h2>Welcome, {currentUser.email}</h2>
             <div className="container">
                 <img
                     src={cart}

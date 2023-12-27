@@ -2,15 +2,12 @@
 
 html,
 body {
-    height: 1vh;
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
     background-color: #EEF0F4;
     box-sizing: border-box;
     user-select: none;
-    display: flex;
-    justify-content: center;
 }
 
 h1 {
