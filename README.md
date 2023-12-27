@@ -1,3 +1,3 @@
-The project uses React Frontend and firebase common database for the backend. So, changes made by any user affects all(for now).
+The project uses React Frontend and firebase common database for the backend.
 
 Deployed at : https://anandpateladdtocart.netlify.app
