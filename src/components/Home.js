@@ -98,9 +98,11 @@ const Home = () => {
                                   ))
                                 : "Nothing here yet!"}
                         </ul>
-                        <footer>
-                            <p>*Double Click on an item to remove. </p>
-                        </footer>
+                        {items.length && (
+                            <footer>
+                                <p>*Double Click on an item to remove. </p>
+                            </footer>
+                        )}
                         <button onClick={() => signOut(auth)}>Sign Out</button>
                     </div>
                     <footer>

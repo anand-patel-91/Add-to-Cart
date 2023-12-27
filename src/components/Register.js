@@ -60,7 +60,7 @@ const Register = () => {
         } catch (error) {
             setLoading(false);
             setErr(true);
-            console.log(error);
+            alert(error.message);
         }
     };
 
