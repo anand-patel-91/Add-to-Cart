@@ -1,9 +1,14 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    sendEmailVerification,
+    updateProfile,
+} from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -14,6 +19,11 @@ const Register = () => {
 
     const handleSubmit = async () => {
         setLoading(true);
+        if (!name) {
+            alert("Name cannot be empty");
+            setLoading(false);
+            return;
+        }
         if (!email) {
             alert("Email cannot be empty");
             setLoading(false);
@@ -32,7 +42,18 @@ const Register = () => {
         }
 
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
+            const { user } = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+            user.displayName = name;
+
+            await updateProfile(user, {
+                displayName: name,
+            });
+
+            await sendEmailVerification(auth.currentUser);
 
             navigate("/");
             setLoading(false);
@@ -48,6 +69,13 @@ const Register = () => {
             <h1>Shopping Cart</h1>
             <div className="container">
                 <h2>Sign Up</h2>
+                <input
+                    type="text"
+                    placeholder="Enter your name"
+                    required
+                    onChange={(e) => setName(e.target.value.trimStart())}
+                    value={name}
+                />
                 <input
                     type="email"
                     placeholder="Enter your email"
