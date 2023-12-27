@@ -1,6 +1,7 @@
 import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
+    signOut,
     updateProfile,
 } from "firebase/auth";
 import React, { useState } from "react";
@@ -57,7 +58,9 @@ const Register = () => {
 
             await sendEmailVerification(auth.currentUser);
 
-            navigate("/");
+            await signOut(auth);
+
+            navigate("/login");
             setLoading(false);
         } catch (error) {
             setLoading(false);

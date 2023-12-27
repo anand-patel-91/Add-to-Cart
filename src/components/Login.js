@@ -1,4 +1,8 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+    sendPasswordResetEmail,
+    signInWithEmailAndPassword,
+    signOut,
+} from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
@@ -28,7 +32,16 @@ const Login = () => {
 
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            navigate("/");
+
+            if (!auth.currentUser.emailVerified) {
+                await signOut(auth);
+                navigate("/login");
+                alert(
+                    "Click on the link received at your email to verify your email and then try again!"
+                );
+            } else {
+                navigate("/");
+            }
             setLoading(false);
         } catch (error) {
             alert(error.message);
@@ -77,6 +90,25 @@ const Login = () => {
                         )}
                     </button>
                 </div>
+                <button
+                    style={{
+                        color: "black",
+                        backgroundColor: "#EEF0F4",
+                        border: "none",
+                        padding: "0",
+                    }}
+                    onClick={() => {
+                        if (email) {
+                            sendPasswordResetEmail(auth, email);
+                            alert(
+                                `A link to reset your email has been sent at you email ${email}`
+                            );
+                        } else {
+                            alert("Enter a valid email");
+                        }
+                    }}>
+                    Forgot Password?
+                </button>
                 <button disabled={loading} onClick={handleSubmit}>
                     Log In
                 </button>
