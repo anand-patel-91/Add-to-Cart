@@ -153,7 +153,7 @@ const Register = () => {
                 {err && <span className="error">Something went wrong</span>}
                 <p>
                     Already have an account?{" "}
-                    <Link to="/login" style={{ color: "bluevoilet" }}>
+                    <Link to="/login" style={{ color: "blue" }}>
                         Login
                     </Link>
                 </p>

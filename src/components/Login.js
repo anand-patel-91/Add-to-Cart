@@ -116,7 +116,7 @@ const Login = () => {
                 {err && <span className="error">Something went wrong</span>}
                 <p>
                     Don't have an account?{" "}
-                    <Link to="/register" style={{ color: "bluevoilet" }}>
+                    <Link to="/register" style={{ color: "blue" }}>
                         Register
                     </Link>
                 </p>
