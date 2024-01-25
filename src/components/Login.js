@@ -121,6 +121,18 @@ const Login = () => {
                     </Link>
                 </p>
             </div>
+            <footer>
+                <small>
+                    Made by{" "}
+                    <a
+                        href="https://github.com/anand-patel-91"
+                        target="_blank"
+                        rel="noreferrer"
+                        title="Visit my Github">
+                        Anand Patel
+                    </a>
+                </small>
+            </footer>
         </>
     );
 };
